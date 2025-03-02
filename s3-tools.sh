@@ -2,7 +2,7 @@
 set -e
 target="Ubuntu 24.04"
 stage="Stage 3"
-echo "$stage - $target - installing utilities"
+echo "$stage - $target - Installing tools: fd, bat, tldr, glow"
 display_header() {
     echo "=================================================="
     echo -e "\n\033[1;34m($stage)>> $1\033[0m"
@@ -10,27 +10,20 @@ display_header() {
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
-display_header "Checking sudo access"
-sudo -v
+# display_header "Checking sudo access"
+# sudo -v
 
 # ============================================================
-# Bat and fd Installation via Cargo
-display_header "Installing bat and fd-find"
+display_header "Installing bat, fd (cargo)"
 cargo install --locked bat
 cargo install fd-find
+
 # ============================================================
-display_header "Installing glow"
+display_header "Installing glow (go)"
 go install github.com/charmbracelet/glow@latest
 
 # ============================================================
-# fzf Installation
-display_header "Installing fzf"
-if [ ! -d "$HOME/.fzf" ]; then
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    ~/.fzf/install --all
-fi
-# ============================================================
-display_header "Installing tldr"
+display_header "Installing tldr (npm)"
 npm install -g tldr
 
 # ============================================================
