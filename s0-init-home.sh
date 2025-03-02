@@ -23,6 +23,10 @@ display_header "Copy scripts to ~/bin"
 cp "$SCRIPT_DIR/home/bin/sysapps" "$HOME/bin"
 cp "$SCRIPT_DIR/home/bin/dump-settings" "$HOME/bin"
 cp "$SCRIPT_DIR/home/bin/load-settings" "$HOME/bin"
+cp "$SCRIPT_DIR/home/data/gnome-terminal.dconf" "$HOME/bin"
+cp "$SCRIPT_DIR/home/data/gnome-text-editor.dconf" "$HOME/bin"
+cp "$SCRIPT_DIR/home/data/tilix.dconf" "$HOME/bin"
+
 echo "☑ ~/bin"
 
 echo "✅ $stage"
