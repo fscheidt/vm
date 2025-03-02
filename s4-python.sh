@@ -2,7 +2,7 @@
 set -e
 target="Ubuntu 24.04"
 stage="Stage 4"
-echo "$stage - Install $target python tools"
+echo "$stage - $target - Installing python tools"
 display_header() {
     echo "=================================================="
     echo -e "\n\033[1;34m($stage)>> $1\033[0m"
@@ -10,12 +10,11 @@ display_header() {
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
-display_header "Checking sudo access"
-sudo -v
+# display_header "Checking sudo access"
+# sudo -v
 
 # ============================================================
-# Install some common Python development tools using pipx
-display_header "Installing Python development tools via pipx"
+display_header "Installing Python dev tools via pipx"
 pipx install black
 pipx install flake8
 pipx install isort
@@ -26,11 +25,8 @@ pipx install pre-commit
 pipx install jupyterlab
 
 # ============================================================
-# Python Development Tools Installation
-display_header "Installing Python development tools"
-
+display_header "Installing pyenv"
 if ! command_exists pyenv; then
-    # Install pyenv for Python version management
     curl https://pyenv.run | bash
     # Add pyenv to bash profile
     echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
@@ -41,7 +37,6 @@ else
 fi
 
 # ============================================================
-# Install Poetry using its official installer
 display_header "Installing Poetry"
 if ! command_exists poetry; then
     curl -sSL https://install.python-poetry.org | python3 -
@@ -51,7 +46,6 @@ else
 fi
 
 # ============================================================
-# Install UV package manager
 display_header "Installing UV package manager"
 if ! command_exists uv; then
     curl -LsSf https://astral.sh/uv/install.sh | sh
