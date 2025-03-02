@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -e
 target="Ubuntu 24.04"
-stage="Stage 4"
+stage="$(basename "$(realpath "$0")")"
+
 echo "$stage - $target - Installing python tools"
 display_header() {
     echo "=================================================="

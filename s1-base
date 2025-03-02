@@ -1,7 +1,8 @@
 #!/bin/bash
 set -e
 target="Ubuntu 24.04"
-stage="Stage 1"
+stage="$(basename "$(realpath "$0")")"
+
 echo "$stage - $target - installing base packages"
 
 display_header() {

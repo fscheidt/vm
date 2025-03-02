@@ -2,7 +2,8 @@
 # shellcheck disable=SC1091
 set -e
 target="Ubuntu 24.04"
-stage="Stage 2"
+stage="$(basename "$(realpath "$0")")"
+
 echo "$stage - $target - installing: go, node, rust, jdk"
 display_header() {
     echo "=================================================="

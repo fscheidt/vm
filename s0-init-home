@@ -1,8 +1,9 @@
 #!/bin/bash
 set -e
 target="Ubuntu 24.04"
-stage="Stage 0"
-SCRIPT_DIR="$(dirname $(realpath "$0"))"
+stage="$(basename "$(realpath "$0")")"
+SCRIPT_DIR="$(dirname "$(realpath "$0")")"
+
 echo "$stage - Init user home and settings: $target"
 display_header() {
     echo "=================================================="
