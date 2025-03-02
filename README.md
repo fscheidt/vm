@@ -10,3 +10,8 @@ bootstrap vm installation
 ./s0-update.sh
 ```
 restart terminal
+
+## aditional resources
+- https://github.com/fscheidt/binaries
+- https://github.com/fscheidt/fonts
+- https://github.com/fscheidt/settings
