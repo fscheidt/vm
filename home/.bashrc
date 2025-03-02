@@ -3,10 +3,12 @@ case $- in
     *i*) ;;
       *) return;;
 esac
+
+export HISTTIMEFORMAT="%y-%m-%d %T "
 HISTCONTROL=ignoreboth
-shopt -s histappend
 HISTSIZE=5000
 HISTFILESIZE=5000
+shopt -s histappend
 shopt -s checkwinsize
 
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -61,11 +63,10 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
 # ========================================
-# VARIABLES AND SETTINGS
+# VARIABLES
 # ========================================
-export HISTTIMEFORMAT="%y/%m/%d %T "
 stty -ixon
 PROMPT_DIRTRIM=2
 export EDITOR=vim
+# ========================================
