@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC1091
+set -e
+target="Ubuntu 24.04"
+stage="$(basename "$(realpath "$0")")"
+
+echo "$stage - $target - Install firefox extensions"
+display_header() {
+    echo "=================================================="
+    echo -e "\n\033[1;34m($stage)>> $1\033[0m"
+}
+display_header "Installing firefox (snap) addons"
+FIREFOX_PROFILE=$(find ~/snap/firefox/common/.mozilla/firefox/ -maxdepth 1 -type d -name "*.default*" | head -n 1)
+
+# Check if Firefox profile directory exists
+if [[ -z "$FIREFOX_PROFILE" ]]; then
+    echo "Firefox profile directory not found. Make sure Firefox is installed and run at least once."
+    exit 1
+fi
+
+EXTENSIONS=(
+    "darkreader" "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi"
+    "ublock-origin" "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi"
+    "vimium-ff" "https://addons.mozilla.org/firefox/downloads/latest/vimium-ff/latest.xpi"
+    "single-file" "https://addons.mozilla.org/firefox/downloads/latest/single-file/latest.xpi"
+    "styl-us" "https://addons.mozilla.org/firefox/downloads/latest/styl-us/latest.xpi"
+    "jsonview" "https://addons.mozilla.org/firefox/downloads/latest/jsonview/latest.xpi"
+)
+# $HOME/snap/firefox/common/.mozilla/firefox/profileId.default/extensions
+EXT_DIR="$FIREFOX_PROFILE/extensions"
+
+# Create extensions directory if it doesn't exist
+mkdir -p "$EXT_DIR"
+
+# Download and install extensions
+for ((i=0; i<${#EXTENSIONS[@]}; i+=2)); do
+    EXT_NAME=${EXTENSIONS[i]}
+    EXT_URL=${EXTENSIONS[i+1]}
+    EXT_FILE="$EXT_DIR/$EXT_NAME.xpi"
+
+    echo "Installing $EXT_NAME..."
+    wget -q -O "$EXT_FILE" "$EXT_URL"
+
+    if [[ $? -eq 0 ]]; then
+        echo "$EXT_NAME installed successfully."
+    else
+        echo "Failed to install $EXT_NAME."
+    fi
+done
+
+echo "✅ $stage"
+echo "✅ $stage - $(date '+%Y-%m-%d %H:%M:%S')" >> log.info
+echo "restart Firefox"
