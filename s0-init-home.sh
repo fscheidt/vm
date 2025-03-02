@@ -29,6 +29,12 @@ cp "$SCRIPT_DIR/home/data/tilix.dconf" "$HOME/bin"
 
 echo "☑ ~/bin"
 
+dconf load /org/gnome/terminal/ < "$HOME/bin/gnome-terminal.dconf"
+echo "☑ gnome-terminal"
+
+dconf load /org/gnome/TextEditor/ < "$HOME/bin/gnome-text-editor.dconf"
+echo "☑ gnome-text-editor"
+
 echo "✅ $stage"
 echo "✅ $stage - $(date '+%Y-%m-%d %H:%M:%S')" >> log.info
 echo "restart terminal"
