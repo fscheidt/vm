@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# @brief backup gnome settings
+# @tag system gnome
+# ############################################
+echo "DUMPING GNOME SETTINGS"
+
+dconf dump /com/gexperts/Tilix/ > "tilix.dconf"
+echo "☑ tilix"
+
+dconf dump /org/gnome/terminal/ > "gnome-terminal.dconf"
+echo "☑ gnome-terminal"
+
+dconf dump /org/gnome/TextEditor/ > "gnome-text-editor.dconf"
+echo "☑ gnome-text-editor"
+
+dconf dump / > "dconf-settings.ini"
+echo "☑ dconf-settings"
+
+echo "✅"

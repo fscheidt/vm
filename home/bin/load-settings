@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# @brief restore gnome settings
+# @tag system gnome
+# ############################################
+echo "RESTORING SETTINGS"
+
+dconf load /com/gexperts/Tilix/ < "tilix.dconf"
+echo "☑ tilix"
+
+dconf load /org/gnome/terminal/ < "gnome-terminal.dconf"
+echo "☑ gnome-terminal"
+
+dconf load /org/gnome/TextEditor/ < "gnome-text-editor.dconf"
+echo "☑ gnome-text-editor"
+
+# dconf load / < "dconf-settings.ini"
+# echo "☑ all settings"
+
+echo "✅"
