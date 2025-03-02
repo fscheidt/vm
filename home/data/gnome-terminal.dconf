@@ -1,21 +1,19 @@
-[legacy]
-menu-accelerator-enabled=false
-
 [legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
 audible-bell=false
-background-color='rgb(0,43,54)'
-bold-color-same-as-fg=true
+background-color='rgb(4,26,32)'
+background-transparency-percent=19
 cell-height-scale=1.1000000000000001
-cell-width-scale=1.0
 cursor-colors-set=false
-default-size-columns=100
-default-size-rows=26
-font='Ubuntu Sans Mono 14'
-foreground-color='rgb(226,240,241)'
-highlight-background-color='rgb(0,255,90)'
+default-size-columns=110
+default-size-rows=28
+font='Monospace 14'
+foreground-color='rgb(220,237,239)'
+highlight-background-color='rgb(39,253,132)'
 highlight-colors-set=true
-highlight-foreground-color='rgb(4,4,21)'
-palette=['rgb(23,20,33)', 'rgb(192,28,40)', 'rgb(38,162,105)', 'rgb(162,115,76)', 'rgb(58,114,182)', 'rgb(163,71,186)', 'rgb(42,161,179)', 'rgb(208,207,204)', 'rgb(94,92,100)', 'rgb(246,97,81)', 'rgb(51,218,122)', 'rgb(233,173,12)', 'rgb(83,150,234)', 'rgb(192,97,203)', 'rgb(51,199,222)', 'rgb(255,255,255)']
+highlight-foreground-color='rgb(9,4,26)'
+palette=['rgb(23,20,33)', 'rgb(192,28,40)', 'rgb(38,162,105)', 'rgb(162,115,76)', 'rgb(64,133,219)', 'rgb(163,71,186)', 'rgb(42,161,179)', 'rgb(208,207,204)', 'rgb(94,92,100)', 'rgb(246,97,81)', 'rgb(51,218,122)', 'rgb(233,173,12)', 'rgb(152,185,225)', 'rgb(192,97,203)', 'rgb(51,199,222)', 'rgb(255,255,255)']
 use-system-font=false
 use-theme-colors=false
-visible-name='user'
+use-theme-transparency=false
+use-transparent-background=true
+visible-name='user2'
