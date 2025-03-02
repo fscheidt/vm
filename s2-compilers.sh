@@ -53,6 +53,14 @@ if ! command_exists nvm; then
 fi
 
 # ============================================================
+display_header "Installing DENO"
+if  [[ -z $(command -v deno) ]]; then
+    curl -fsSL https://deno.land/install.sh | sh
+    export PATH="$HOME/.deno/bin:$PATH"
+    # cargo install deno --locked
+fi
+
+# ============================================================
 display_header "Installing JDK (sdkman)"
 JDK="21.0.6-zulu"
 if ! command_exists sdk; then
@@ -64,6 +72,9 @@ sdk install java $JDK
 echo "☑ jdk"
 
 # ============================================================
+
+[[ -n $(command -v deno) ]] && echo "☑ deno"
+[[ -n $(command -v nvm) ]] && echo "☑ nvm"
 
 echo "✅ $stage"
 echo "✅ $stage - $(date '+%Y-%m-%d %H:%M:%S')" >> log.info
