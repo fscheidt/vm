@@ -3,7 +3,7 @@ set -e
 target="Ubuntu 24.04"
 stage="Stage 0"
 SCRIPT_DIR="$(dirname $(realpath "$0"))"
-echo "$stage - Init user home: $target"
+echo "$stage - Init user home and settings: $target"
 display_header() {
     echo "=================================================="
     echo -e "\n\033[1;34m($stage)>> $1\033[0m"
@@ -14,8 +14,16 @@ cd "$HOME" && mkdir -p bin .fonts data Temp Softwares
 cp "$SCRIPT_DIR/home/.bash_aliases" "$HOME/"
 cp "$SCRIPT_DIR/home/.bashrc" "$HOME/"
 cp "$SCRIPT_DIR/home/.vimrc" "$HOME/"
-cp "$SCRIPT_DIR/home/sysapps" "$HOME/bin"
 unzip -o "$SCRIPT_DIR/home/Pictures.zip" -d "$HOME/"
+
+echo "☑ \$HOME"
+
+# ============================================================
+display_header "Copy scripts to ~/bin"
+cp "$SCRIPT_DIR/home/bin/sysapps" "$HOME/bin"
+cp "$SCRIPT_DIR/home/bin/dump-settings" "$HOME/bin"
+cp "$SCRIPT_DIR/home/bin/load-settings" "$HOME/bin"
+echo "☑ ~/bin"
 
 echo "✅ $stage"
 echo "✅ $stage - $(date '+%Y-%m-%d %H:%M:%S')" >> log.info

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -e
 target="Ubuntu 24.04"
-stage="Stage 7"
-echo "$stage - $target - installing databases"
+stage="Stage 9"
+echo "$stage - $target - Installing databases"
 display_header() {
     echo "=================================================="
     echo -e "\n\033[1;34m($stage)>> $1\033[0m"
@@ -13,12 +13,15 @@ sudo -v
 # ============================================================
 display_header "Installing postgresql"
 sudo apt install postgresql postgresql-contrib -y
+echo "☑ postgresql"
 
 display_header "Installing mysql"
 sudo apt install mysql-server libmysqlclient-dev -y
+echo "☑ mysql"
 
 display_header "Installing redis"
 sudo apt install redis-server -y
+echo "☑ redis"
 
 # display_header "Installing mongodb"
 # sudo apt install mongodb -y

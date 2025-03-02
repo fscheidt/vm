@@ -10,7 +10,6 @@ display_header() {
 display_header "Checking sudo access"
 sudo -v
 # ============================================================
-# APT Packages Installation
 display_header "Updating system packages"
 sudo apt-get update && sudo apt-get upgrade -y
 

@@ -17,14 +17,17 @@ command_exists() {
 display_header "Installing bat, fd (cargo)"
 cargo install --locked bat
 cargo install fd-find
+echo "☑ bat"
+echo "☑ fd"
 
 # ============================================================
 display_header "Installing glow (go)"
 go install github.com/charmbracelet/glow@latest
-
+echo "☑ glow"
 # ============================================================
 display_header "Installing tldr (npm)"
 npm install -g tldr
+echo "☑ tldr"
 
 # ============================================================
 echo "✅ $stage"

@@ -26,15 +26,20 @@ sudo apt install -y make build-essential \
     llvm libncurses5-dev libncursesw5-dev \
     xz-utils tk-dev libffi-dev liblzma-dev -y
 
+echo "☑ apt build"
+
 # ============================================================
 display_header "Installing archive tools"
 sudo apt install rar unrar p7zip-full p7zip-rar pigz -y
+echo "☑ apt zip"
 
 # ============================================================
 display_header "Installing Python packages"
 sudo apt-get install python3-pip python3-venv python3-gpg \
   python3-dev python3-openssl python3-tk python3-wheel \
   python3-setuptools -y
+
+echo "☑ apt python packages"
 
 # ============================================================
 display_header "Installing search and utility tools"
@@ -52,11 +57,13 @@ sudo apt install pandoc pdftk w3m -y
 display_header "Installing system utilities"
 sudo apt install attr colordiff gparted net-tools httpie -y
 
+echo "☑ apt packages"
 # ============================================================
 display_header "Installing fzf (git clone)"
 if [ ! -d "$HOME/.fzf" ]; then
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     ~/.fzf/install --all
+    echo "☑ fzf"
 fi
 
 # ============================================================
@@ -77,6 +84,7 @@ fi
   sudo rm -f /etc/profile.d/vte.sh
   sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
   rm -f $tilix_package
+  echo "☑ tilix"
 else
   echo "tilix already installed"
 fi
@@ -84,6 +92,7 @@ fi
 # ============================================================
 display_header "Installing pipx"
 sudo apt install pipx -y && pipx ensurepath
+echo "☑ pipx"
 
 # ============================================================
 echo "✅ $stage"

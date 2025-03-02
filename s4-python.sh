@@ -32,6 +32,7 @@ if ! command_exists pyenv; then
     echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
     echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
     echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+    echo "☑ pyenv"
 else
     echo "pyenv already installed"
 fi
@@ -41,6 +42,7 @@ display_header "Installing Poetry"
 if ! command_exists poetry; then
     curl -sSL https://install.python-poetry.org | python3 -
     echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+    echo "☑ poetry"
 else
     echo "poetry already installed"
 fi
@@ -50,6 +52,7 @@ display_header "Installing UV package manager"
 if ! command_exists uv; then
     curl -LsSf https://astral.sh/uv/install.sh | sh
     echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.bashrc
+    echo "☑ uv"
 else
     echo "uv already installed"
 fi

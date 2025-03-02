@@ -2,7 +2,7 @@
 set -e
 target="Ubuntu 24.04"
 stage="Stage 6"
-echo "$stage - $target Update apt sources and install gh, vscode, chrome"
+echo "$stage - $target - Update apt sources and install gh, vscode, chrome"
 display_header() {
     echo "=================================================="
     echo -e "\n\033[1;34m($stage)>> $1\033[0m"
@@ -24,6 +24,7 @@ if ! command_exists code; then
     echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/code stable main" | sudo tee /etc/apt/sources.list.d/vscode.list
     sudo apt update
     sudo apt install code -y
+    echo "☑ vscode"
     
     echo "Installing vscode extensions"    
     code --install-extension ms-python.python
@@ -31,8 +32,9 @@ if ! command_exists code; then
     code --install-extension ms-toolsai.jupyter
     code --install-extension njpwerner.autodocstring
     code --install-extension kevinrose.vsc-python-indent
+    echo "☑ vscode extensions"
 else
-    echo "vscode already installed"
+    echo "=> vscode already installed"
 fi
 
 # ============================================================
@@ -46,12 +48,12 @@ if ! command_exists google-chrome; then
     sudo apt install -y google-chrome-stable
     # Verify installation
     if command -v google-chrome >/dev/null 2>&1; then
-        echo "✅ chrome installed!"
+        echo "☑ chrome"
     else
         echo "❌ chrome installation failed."
     fi
 else
-    echo "✅ chrome is already installed."
+    echo "=> chrome is already installed."
 fi
 
 # ============================================================
@@ -63,13 +65,13 @@ if ! command_exists gh; then
     sudo apt update
     sudo apt install -y gh
     # Verify installation
-    if command -v gh >/dev/null 2>&1; then
-        echo "✅ GH CLI installed!"
+    if command -v gh >/dev/null 2>&1; then        
+        echo "☑ gh"
     else
-        echo "❌ GH installation failed."
+        echo "❌ gh installation failed."
     fi
 else
-    echo "✅ GH CLI is already installed."
+    echo "=> gh is already installed."
 fi
 # ============================================================
 

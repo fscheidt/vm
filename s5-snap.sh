@@ -18,6 +18,7 @@ sudo snap refresh
 # ============================================================
 display_header "Installing FUSE"
 sudo apt install libfuse2 -y
+echo "☑ libfuse2"
 
 # ============================================================
 display_header "Installing snap packages"
@@ -38,6 +39,8 @@ sudo snap install vlc
 sudo snap install sublime-text --classic
 sudo snap install docker
 sudo snap install postman
+
+echo "☑ snap packages"
 
 # ============================================================
 
