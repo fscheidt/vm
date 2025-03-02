@@ -70,3 +70,4 @@ stty -ixon
 PROMPT_DIRTRIM=2
 export EDITOR=vim
 # ========================================
+
