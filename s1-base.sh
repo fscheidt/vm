@@ -84,6 +84,9 @@ fi
   sudo rm -f /etc/profile.d/vte.sh
   sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
   rm -f $tilix_package
+  dconf load /com/gexperts/Tilix/ < "$HOME/bin/tilix.dconf"
+  echo "☑ tilix settings"
+
   echo "☑ tilix"
 else
   echo "tilix already installed"
