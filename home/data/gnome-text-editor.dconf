@@ -1,0 +1,15 @@
+[/]
+custom-font='Ubuntu Sans Mono 16'
+discover-settings=false
+highlight-current-line=true
+indent-style='space'
+last-save-directory=''
+restore-session=false
+show-grid=true
+show-line-numbers=true
+show-map=true
+spellcheck=false
+style-scheme='cobalt-light'
+tab-width=uint32 4
+use-system-font=false
+wrap-text=false

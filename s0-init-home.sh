@@ -14,7 +14,7 @@ cd "$HOME" && mkdir -p bin .fonts data Temp Softwares
 cp "$SCRIPT_DIR/home/.bash_aliases" "$HOME/"
 cp "$SCRIPT_DIR/home/.bashrc" "$HOME/"
 cp "$SCRIPT_DIR/home/.vimrc" "$HOME/"
-unzip -o "$SCRIPT_DIR/home/Pictures.zip" -d "$HOME/"
+unzip -o "$SCRIPT_DIR/home/data/Pictures.zip" -d "$HOME/"
 
 echo "☑ \$HOME"
 
