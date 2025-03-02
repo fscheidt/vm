@@ -56,7 +56,7 @@ fi
 # ============================================================
 display_header "Installing DENO"
 if  [[ -z $(command -v deno) ]]; then
-    curl -fsSL https://deno.land/install.sh | sh
+    curl -fsSL https://deno.land/install.sh | sh -s -- -y
     export PATH="$HOME/.deno/bin:$PATH"
     # cargo install deno --locked
 fi
