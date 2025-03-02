@@ -10,7 +10,7 @@ display_header() {
 }
 # ============================================================
 display_header "Create user home files"
-cd "$HOME" && mkdir -p bin .fonts data Temp Softwares
+mkdir -p "$HOME/bin" "$HOME/.fonts" "$HOME/data" "$HOME/Temp" "$HOME/Softwares"
 cp "$SCRIPT_DIR/home/.bash_aliases" "$HOME/"
 cp "$SCRIPT_DIR/home/.bashrc" "$HOME/"
 cp "$SCRIPT_DIR/home/.vimrc" "$HOME/"
