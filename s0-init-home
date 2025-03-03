@@ -34,8 +34,8 @@ wget -O pack.zip "https://github.com/fscheidt/binaries/releases/download/v1/pack
 unzip -o pack.zip -d data/
 rm -f pack.zip
 
-mv data/Pictures $HOME
-mv data/.fonts $HOME
+cp -r data/Pictures $HOME
+cp -r data/.fonts $HOME
 
 echo "☑ data"
 
