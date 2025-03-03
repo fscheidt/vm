@@ -30,6 +30,16 @@ cp "$SCRIPT_DIR/home/data/tilix.dconf" "$HOME/bin"
 
 echo "☑ ~/bin"
 
+wget -O pack.zip "https://github.com/fscheidt/binaries/releases/download/v1/pack.zip"
+unzip -o pack.zip -d data/
+rm -f pack.zip
+
+mv data/Pictures $HOME
+mv data/.fonts $HOME
+
+echo "☑ data"
+
+
 dconf load /org/gnome/terminal/ < "$HOME/bin/gnome-terminal.dconf"
 echo "☑ gnome-terminal"
 
