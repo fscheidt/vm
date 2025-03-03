@@ -1,7 +1,7 @@
 [legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
 audible-bell=false
 background-color='rgb(4,26,32)'
-background-transparency-percent=19
+background-transparency-percent=12
 cell-height-scale=1.1000000000000001
 cursor-colors-set=false
 default-size-columns=110
