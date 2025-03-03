@@ -95,7 +95,8 @@ fi
 
 # ============================================================
 display_header "Installing pipx"
-sudo apt install pipx -y && pipx ensurepath && pipx install tabulate
+sudo apt install pipx -y && pipx ensurepath 
+# && pipx install tabulate
 echo "☑ pipx"
 
 # ============================================================
