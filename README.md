@@ -1,6 +1,16 @@
 # vm files
 bootstrap vm installation
 
+## pre-requisites
+
+```bash
+sudo apt install tar
+sudo apt install bzip2
+sudo apt install -y build-essential dkms perl make gcc linux-headers-$(uname -r)
+# reboot
+sudo ./VBoxLinuxAdditions.run 
+```
+
 ## stage 0
 - create user home files and dirs
 - upgrade system
