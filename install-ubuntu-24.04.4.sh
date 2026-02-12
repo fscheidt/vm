@@ -26,6 +26,9 @@ sudo apt install pandoc pdftk w3m -y
 
 sudo apt install pipx
 pipx ensurepath
+# close terminal
+pipx install tabulate
+
 
 # rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -37,6 +40,10 @@ cargo install fd-find
 # nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
 nvm install node
+
+
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
 
 
 # browsers
