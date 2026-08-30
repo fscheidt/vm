@@ -17,6 +17,12 @@ sudo -v
 sudo snap refresh
 
 # ============================================================
+display_header "Updating Snap-store"
+snap-store --quit
+sudo snap refresh snap-store
+sudo systemctl restart snapd
+
+# ============================================================
 display_header "Installing FUSE"
 sudo apt install libfuse2 -y
 echo "☑ libfuse2"

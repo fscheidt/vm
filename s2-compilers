@@ -63,13 +63,14 @@ fi
 
 # ============================================================
 display_header "Installing JDK (sdkman)"
-JDK="21.0.6-zulu"
+JDK="21.0.12+1.1-zulu" # LTS
 if ! command_exists sdk; then
     curl -s "https://get.sdkman.io" | bash
     source "$HOME/.sdkman/bin/sdkman-init.sh"
 fi
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 sdk install java $JDK
+
 echo "☑ jdk"
 
 # ============================================================

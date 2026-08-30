@@ -15,20 +15,22 @@ command_exists() {
 # sudo -v
 
 # ============================================================
-display_header "Installing bat, fd (cargo)"
+display_header "bat (cargo)"
 cargo install --locked bat
-cargo install fd-find
+# cargo install fd-find
 echo "☑ bat"
+
+display_header "fd (apt)"
+sudo apt install fd-find
 echo "☑ fd"
 
 # ============================================================
-display_header "Installing glow (go)"
-go install github.com/charmbracelet/glow@latest
+display_header "glow (go)"
+go install charm.land/glow/v3@latest
+# go install github.com/charmbracelet/glow@latest
 echo "☑ glow"
 # ============================================================
-display_header "Installing tldr (npm)"
-npm install -g tldr
-echo "☑ tldr"
+
 
 # ============================================================
 echo "✅ $stage"
