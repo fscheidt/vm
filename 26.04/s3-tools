@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+set -e
+target="Ubuntu 24.04"
+stage="$(basename "$(realpath "$0")")"
+
+echo "$stage - $target - Installing tools: fd, bat, tldr, glow"
+display_header() {
+    echo "=================================================="
+    echo -e "\n\033[1;34m($stage)>> $1\033[0m"
+}
+command_exists() {
+    command -v "$1" >/dev/null 2>&1
+}
+# display_header "Checking sudo access"
+# sudo -v
+
+# ============================================================
+display_header "bat (cargo)"
+cargo install --locked bat
+# cargo install fd-find
+echo "☑ bat"
+
+display_header "fd (apt)"
+sudo apt install fd-find
+echo "☑ fd"
+
+# ============================================================
+display_header "glow (go)"
+go install charm.land/glow/v3@latest
+# go install github.com/charmbracelet/glow@latest
+echo "☑ glow"
+# ============================================================
+
+
+# ============================================================
+echo "✅ $stage"
+echo "✅ $stage - $(date '+%Y-%m-%d %H:%M:%S')" >> log.info
+echo "restart terminal"
