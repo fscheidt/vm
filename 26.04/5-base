@@ -47,7 +47,7 @@ display_header "Installing search and utility tools"
 sudo apt install vim silversearcher-ag jq sqlite3 -y
 
 # ============================================================
-display_header "Installing system monitoring and utility tools"
+display_header "Installing system monitoring"
 sudo apt install htop btop -y
 
 # ============================================================
@@ -58,40 +58,13 @@ sudo apt install pandoc pdftk w3m -y
 display_header "Installing fzf (git clone)"
 if [ ! -d "$HOME/.fzf" ]; then
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    ~/.fzf/install --all
+~/.fzf/install
     echo "☑ fzf"
-fi
-
-# ============================================================
-display_header "Installing Tilix (deb package)"
-tilix_package="tilix_1.9.6-2build1_amd64.deb"
-tilix_url="http://mirrors.kernel.org/ubuntu/pool/universe/t/tilix/${tilix_package}"
-
-if ! command_exists tilix; then
-  wget $tilix_url && sudo apt install ./$tilix_package -y
-if ! grep -q "TILIX_ID" $HOME/.bashrc; then
-cat <<EOF >> $HOME/.bashrc
-if [ "\$TILIX_ID" ] || [ "\$VTE_VERSION" ]; then
-  source /etc/profile.d/vte.sh
-fi
-EOF
-    echo "Added TILIX_ID to .bashrc"
-fi
-  sudo rm -f /etc/profile.d/vte.sh
-  sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
-  rm -f $tilix_package
-  dconf load /com/gexperts/Tilix/ < "$HOME/bin/tilix.dconf"
-  echo "☑ tilix settings"
-
-  echo "☑ tilix"
-else
-  echo "tilix already installed"
 fi
 
 # ============================================================
 display_header "Installing pipx"
 sudo apt install pipx -y && pipx ensurepath 
-# && pipx install tabulate
 echo "☑ pipx"
 
 # ============================================================

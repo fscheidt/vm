@@ -28,7 +28,8 @@ pipx install jupyterlab
 # ============================================================
 display_header "Installing pyenv"
 if ! command_exists pyenv; then
-    curl https://pyenv.run | bash
+    curl -fsSL https://pyenv.run | bash
+    # curl https://pyenv.run | bash
     # Add pyenv to bash profile
     echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
     echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc

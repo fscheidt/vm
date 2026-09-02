@@ -16,9 +16,11 @@ command_exists() {
 
 # ============================================================
 display_header "bat (cargo)"
-cargo install --locked bat
+# download package: bat_x.xx_amd64.deb
+# https://github.com/sharkdp/bat/releases/latest
+# cargo install --locked bat
 # cargo install fd-find
-echo "☑ bat"
+# echo "☑ bat"
 
 display_header "fd (apt)"
 sudo apt install fd-find

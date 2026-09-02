@@ -1,0 +1,31 @@
+#!/bin/bash
+set -e
+stage="$(basename "$(realpath "$0")")"
+SCRIPT_DIR="$(dirname "$(realpath "$0")")"
+
+echo "$stage - Home folder initialization"
+display_header() {
+    echo "=================================================="
+    echo -e "\n\033[1;34m($stage)>> $1\033[0m"
+}
+# ============================================================
+display_header "Create user folders"
+mkdir -p "$HOME/devel/Projects" "$HOME/devel/Repos" "$HOME/data" "$HOME/Temp" "$HOME/Softwares"
+
+# ============================================================
+display_header "Copying bash template scripts"
+cp "$SCRIPT_DIR/templates/.bash_aliases" "$HOME/"
+cp "$SCRIPT_DIR/templates/.vimrc" "$HOME/"
+# cp "$SCRIPT_DIR/templates/.bashrc" "$HOME/"
+
+echo "☑ \$HOME"
+
+# dconf load /org/gnome/terminal/ < "$HOME/bin/gnome-terminal.dconf"
+# echo "☑ gnome-terminal"
+
+# dconf load /org/gnome/TextEditor/ < "$HOME/bin/gnome-text-editor.dconf"
+# echo "☑ gnome-text-editor"
+
+echo "✅ $stage"
+echo "✅ $stage - $(date '+%Y-%m-%d %H:%M:%S')" >> log.info
+echo "restart terminal"

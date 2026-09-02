@@ -10,19 +10,11 @@ sudo apt install -y \
   libreadline-dev libsqlite3-dev \
   llvm libncurses-dev \
   xz-utils tk-dev libffi-dev liblzma-dev
-  
-sudo apt install -y rar unrar p7zip-full pigz 7zip
 
 sudo apt install -y \
   python3-pip python3-venv python3-dev python3-tk python3-wheel
 
-sudo apt install vim silversearcher-ag jq sqlite3 meld mc -y
-
-sudo apt install -y attr colordiff httpie
-
-sudo apt install htop neofetch shellcheck figlet -y
-
-sudo apt install pandoc pdftk w3m -y
+sudo apt install vim silversearcher-ag jq sqlite3 -y
 
 sudo apt install pipx
 pipx ensurepath
