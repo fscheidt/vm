@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 set -e
-target="Ubuntu 24.04"
 stage="$(basename "$(realpath "$0")")"
 
-echo "$stage - $target - Installing tools: fd, bat, tldr, glow"
+echo "$stage - TOOLS"
 display_header() {
     echo "=================================================="
     echo -e "\n\033[1;34m($stage)>> $1\033[0m"
