@@ -3,7 +3,7 @@
 set -e
 stage="$(basename "$(realpath "$0")")"
 
-echo "$stage - installing: go, node, rust, jdk"
+echo "$stage - COMPILERS"
 display_header() {
     echo "=================================================="
     echo -e "\n\033[1;34m($stage)>> $1\033[0m"
@@ -14,19 +14,19 @@ command_exists() {
 display_header "Checking sudo access"
 sudo -v
 # ============================================================
-display_header "Installing Rust"
+display_header "Installing RUST"
 if ! command_exists rustc; then
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
     source "$HOME/.cargo/env"
     echo "☑ rust"
 fi
 # ============================================================
-GO_VERSION="1.24.0"
+GO_VERSION="1.27.0"
 display_header "Installing GO ($GO_VERSION)"
 GO_FILE="/usr/local/go/bin/go"
 GO_TAR="go${GO_VERSION}.linux-amd64.tar.gz"
 if [[ ! -e $GO_FILE ]]; then
-    echo "installing version: $GO_VERSION"
+    echo "Version: $GO_VERSION"
     wget "https://go.dev/dl/${GO_TAR}" && sudo tar -C /usr/local -xzf "${GO_TAR}"
     rm "${GO_TAR}"
     # Add Go to system-wide PATH using tee
@@ -36,20 +36,24 @@ if [[ ! -e $GO_FILE ]]; then
         echo 'export PATH="$HOME/go/bin:$PATH"' >> ~/.bashrc
         echo "Added Go to system-wide PATH in /etc/profile"
     fi
-    echo "☑ go"
+    echo "☑ GO"
 else
     echo "GO already installed"
 fi
 
 # ============================================================
-NVM_VERSION="v0.40.1"
-display_header "Installing NODE with nvm ($NVM_VERSION)"
+# curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.7/install.sh | bash
+NVM_VERSION="v0.40.7"
+display_header "Installing NVM and NODEJS ($NVM_VERSION)"
 if ! command_exists nvm; then
+    echo "Installing NVM ($NVM_VERSION)"
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION/install.sh | bash
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    echo "☑ NVM - $NVM_VERSION"
+    echo "Installing NODE LTS"
     nvm install node
-    echo "☑ node"
+    echo "☑ NODE LTS"
 fi
 
 # ============================================================
@@ -61,8 +65,8 @@ if  [[ -z $(command -v deno) ]]; then
 fi
 
 # ============================================================
-display_header "Installing JDK (sdkman)"
-# sdk i java 21.0.12+1.1-zulu
+display_header "JDK 21 (sdkman)"
+# command: sdk i java 21.0.12+1.1-zulu
 JDK="21.0.12+1.1-zulu" # LTS
 if ! command_exists sdk; then
     curl -s "https://get.sdkman.io" | bash
@@ -71,7 +75,7 @@ fi
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 sdk install java $JDK
 
-echo "☑ jdk"
+echo "☑ $JDK"
 
 # ============================================================
 
