@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 set -e
-target="Ubuntu 24.04"
 stage="$(basename "$(realpath "$0")")"
 
-echo "$stage - $target - Installing snap packages"
+echo "$stage - Snap packages"
 display_header() {
     echo "=================================================="
     echo -e "\n\033[1;34m($stage)>> $1\033[0m"
@@ -44,8 +43,8 @@ sudo snap install sqlitebrowser
 sudo snap install telegram-desktop
 sudo snap install vlc
 sudo snap install sublime-text --classic
-sudo snap install docker
 sudo snap install postman
+# sudo snap install docker
 
 echo "☑ snap packages"
 
