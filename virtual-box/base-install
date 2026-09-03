@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -e
+echo "APT packages"
+sudo apt install curl git vim wget tree -y
+sudo apt install fzf fd-find bat silversearcher-ag jq sqlite3 -y
