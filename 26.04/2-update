@@ -10,10 +10,10 @@ display_header() {
 display_header "Checking sudo access"
 sudo -v
 # ============================================================
-display_header "apt packages"
+display_header "UPDATE APT packages"
 sudo apt-get update && sudo apt-get upgrade -y
 
-display_header "Base utilities"
+display_header "basic utilities"
 sudo apt install curl git wget vim tree -y
 
 echo "✅ $stage"
