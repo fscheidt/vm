@@ -1,27 +1,27 @@
-# vm files
-bootstrap vm installation
+# VirtualBox
 
-## pre-requisites
+Initialization for virtualbox ubuntu systems.
+
+## Guest Additions
+
+Provides functionalities such as shared clipboard, drag-and-drop, automatic window resolution, shared folders, and hardware-accelerated graphics.
 
 ```bash
-sudo apt install tar
-sudo apt install bzip2
+sudo apt-get update && sudo apt-get upgrade -y
+```
+
+```bash
+sudo apt install tar bzip2
+```
+
+```bash
 sudo apt install -y build-essential dkms perl make gcc linux-headers-$(uname -r)
-# reboot
+```
+
+*reboot*
+
+```bash
 sudo ./VBoxLinuxAdditions.run 
 ```
 
-## stage 0
-- create user home files and dirs
-- upgrade system
-
-```bash
-./s0-init-home.sh
-./s0-update.sh
-```
-restart terminal
-
-## aditional resources
-- https://github.com/fscheidt/binaries
-- https://github.com/fscheidt/fonts
-- https://github.com/fscheidt/settings
+*reboot*
