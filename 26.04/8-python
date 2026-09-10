@@ -22,7 +22,7 @@ pipx install pre-commit
 pipx install jupyterlab
 
 # ============================================================
-display_header "Installing pyenv"
+display_header "# PYENV"
 if ! command_exists pyenv; then
     curl -fsSL https://pyenv.run | bash
     # curl https://pyenv.run | bash
@@ -46,14 +46,16 @@ else
 fi
 
 # ============================================================
-display_header "Installing UV package manager"
-if ! command_exists uv; then
-    curl -LsSf https://astral.sh/uv/install.sh | sh
-    echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.bashrc
+display_header "UV package manager + uvx"
+if ! command_exists uv; then    
+    # install uv 0.12.13
+    curl -LsSf https://astral.sh/uv/install.sh | sh    
+    # installing to ~/.local/bin
     echo "☑ uv"
 else
     echo "uv already installed"
 fi
+
 
 # ============================================================
 
