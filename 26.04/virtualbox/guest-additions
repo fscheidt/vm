@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -e
+echo "VirtualBox - Guest Additions"
+
+sudo apt-get update && sudo apt-get upgrade -y
+
+sudo apt install tar bzip2
+
+sudo apt install -y build-essential dkms perl make gcc linux-headers-$(uname -r)
+
+# reboot and mount
+sudo ./VBoxLinuxAdditions.run 
+
