@@ -1,28 +1,29 @@
 #!/usr/bin/env bash
-# shellcheck disable=SC1091
 set -e
 stage="$(basename "$(realpath "$0")")"
 
-echo "$stage - COMPILERS"
+echo "$stage - DATABASES"
 display_header() {
     echo "=================================================="
     echo -e "\n\033[1;34m($stage)>> $1\033[0m"
 }
-command_exists() {
-    command -v "$1" >/dev/null 2>&1
-}
-#display_header "Checking sudo access"
-#sudo -v
+display_header "Checking sudo access"
+sudo -v
+
 # ============================================================
-display_header "Installing RUST"
-if ! command_exists rustc; then
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-    source "$HOME/.cargo/env"
-    echo "☑ rust"
-fi
+display_header "POSTGRESQL"
+sudo apt install postgresql postgresql-contrib -y
+echo "☑ postgresql"
+
+#display_header "MYSQL"
+#sudo apt install mysql-server libmysqlclient-dev -y
+#echo "☑ mysql"
+
+display_header "REDIS"
+sudo apt install redis-server -y
+echo "☑ redis"
 
 # ============================================================
 
 echo "✅ $stage"
 echo "✅ $stage - $(date '+%Y-%m-%d %H:%M:%S')" >> log.info
-echo "reboot system"

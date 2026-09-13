@@ -13,6 +13,8 @@ command_exists() {
 display_header "Checking sudo access"
 sudo -v
 
+# ============================================================
+display_header "Updating snap (itself)"
 sudo snap refresh
 
 # ============================================================

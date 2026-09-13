@@ -10,20 +10,7 @@ display_header() {
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
-# display_header "Checking sudo access"
-# sudo -v
 
-# ============================================================
-display_header "bat (cargo)"
-# download package: bat_x.xx_amd64.deb
-# https://github.com/sharkdp/bat/releases/latest
-# cargo install --locked bat
-# cargo install fd-find
-# echo "☑ bat"
-
-display_header "fd (apt)"
-sudo apt install fd-find
-echo "☑ fd"
 
 # ============================================================
 display_header "glow (go)"

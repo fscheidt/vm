@@ -11,12 +11,8 @@ display_header() {
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
-display_header "Checking sudo access"
-sudo -v
 
-# ============================================================
-display_header "Updating snap (itself)"
-sudo snap refresh
+sudo apt install fzf fd-find bat silversearcher-ag jq sqlite3 -y
 
 # ============================================================
 display_header "Installing build tools"
@@ -47,14 +43,6 @@ sudo apt install htop btop -y
 # ============================================================
 display_header "PDF tools"
 sudo apt install pandoc pdftk w3m -y
-
-# ============================================================
-display_header "fzf (git clone)"
-if [ ! -d "$HOME/.fzf" ]; then
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
-    echo "☑ fzf"
-fi
 
 # ============================================================
 display_header "pipx"

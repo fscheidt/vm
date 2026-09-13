@@ -11,17 +11,9 @@ display_header "Checking sudo access"
 sudo -v
 
 # ============================================================
-display_header "POSTGRESQL"
-sudo apt install postgresql postgresql-contrib -y
-echo "☑ postgresql"
-
 display_header "MYSQL"
 sudo apt install mysql-server libmysqlclient-dev -y
 echo "☑ mysql"
-
-display_header "REDIS"
-sudo apt install redis-server -y
-echo "☑ redis"
 
 # ============================================================
 
