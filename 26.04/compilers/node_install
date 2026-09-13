@@ -3,27 +3,18 @@
 set -e
 stage="$(basename "$(realpath "$0")")"
 
-echo "$stage - COMPILERS"
+echo "NODEJS"
+
 display_header() {
     echo "=================================================="
-    echo -e "\n\033[1;34m($stage)>> $1\033[0m"
+    echo -e "\n\033[1;34m>> $1\033[0m"
 }
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
-#display_header "Checking sudo access"
-#sudo -v
 # ============================================================
-display_header "Installing RUST"
-if ! command_exists rustc; then
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-    source "$HOME/.cargo/env"
-    echo "☑ rust"
-fi
-
-# ============================================================
-# curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.7/install.sh | bash
 NVM_VERSION="v0.40.7"
+# https://github.com/nvm-sh/nvm#install--update-script
 display_header "Installing NVM and NODEJS ($NVM_VERSION)"
 if ! command_exists nvm; then
     echo "Installing NVM ($NVM_VERSION)"
