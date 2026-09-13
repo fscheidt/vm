@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC1091
+set -e
+stage="$(basename "$(realpath "$0")")"
+
+echo "GO"
+display_header() {
+  echo "=================================================="
+  echo -e "\n\033[1;34m>> $1\033[0m"
+}
+command_exists() {
+  command -v "$1" >/dev/null 2>&1
+}
+display_header "Checking sudo access"
+sudo -v
+
+# ============================================================
+GO_VERSION="1.27.1"
+display_header "Installing GO ($GO_VERSION)"
+GO_FILE="/usr/local/go/bin/go"
+GO_TAR="go${GO_VERSION}.linux-amd64.tar.gz"
+# https://go.dev/dl/
+if [[ ! -e $GO_FILE ]]; then
+    echo "Version: $GO_VERSION"
+    wget "https://go.dev/dl/${GO_TAR}" && sudo tar -C /usr/local -xzf "${GO_TAR}"
+    rm "${GO_TAR}"
+    # Add Go to system-wide PATH using tee
+    display_header "Configuring Go in system PATH"
+    if ! grep -q "export PATH=\$PATH:/usr/local/go/bin" /etc/profile; then
+        echo 'export PATH=$PATH:/usr/local/go/bin' | sudo tee -a /etc/profile
+        echo 'export PATH="$HOME/go/bin:$PATH"' >> ~/.bashrc
+        echo "Added Go to system-wide PATH in /etc/profile"
+    fi
+    echo "☑ GO"
+else
+    echo "GO already installed"
+fi
+
+echo "✅ $stage"
+echo "✅ $stage - $(date '+%Y-%m-%d %H:%M:%S')" >> log.info
+echo "reboot system"
