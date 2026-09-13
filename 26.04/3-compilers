@@ -44,18 +44,7 @@ if  [[ -z $(command -v deno) ]]; then
     # cargo install deno --locked
 fi
 
-# ============================================================
-display_header "JDK 21 (sdkman)"
-# command: sdk i java 21.0.12+1.1-zulu
-JDK="21.0.12+1.1-zulu" # LTS
-if ! command_exists sdk; then
-    curl -s "https://get.sdkman.io" | bash
-    source "$HOME/.sdkman/bin/sdkman-init.sh"
-fi
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-sdk install java $JDK
 
-echo "☑ $JDK"
 
 # ============================================================
 

@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC1091
+set -e
+stage="$(basename "$(realpath "$0")")"
+
+display_header() {
+  echo "=================================================="
+  echo -e "\n\033[1;34m>> $1\033[0m"
+}
+# ============================================================
+command_exists() {
+  command -v "$1" >/dev/null 2>&1
+}
+# display_header "Checking sudo access"
+# sudo -v
+# ============================================================
+display_header "JDK 21 (sdkman)"
+# command: sdk i java 21.0.12+1.1-zulu
+JDK="21.0.12+1.1-zulu" # LTS
+if ! command_exists sdk; then
+    curl -s "https://get.sdkman.io" | bash
+    source "$HOME/.sdkman/bin/sdkman-init.sh"
+fi
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+sdk install java $JDK
+
+echo "☑ $JDK"
+
+echo "✅ $stage"
+echo "✅ $stage - $(date '+%Y-%m-%d %H:%M:%S')" >> log.info
+echo "reboot system"
