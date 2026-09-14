@@ -8,4 +8,3 @@
 ## aditional resources
 - https://github.com/fscheidt/binaries
 - https://github.com/fscheidt/fonts
-- https://github.com/fscheidt/settings
