@@ -12,9 +12,35 @@ command_exists() {
   command -v "$1" >/dev/null 2>&1
 }
 display_header "Checking sudo access"
-sudo -v
+sudo -v || exit 1
 
 # ============================================================
 display_header "bat"
-# https://github.com/sharkdp/bat/releases/latest
-wget "https://github.com/sharkdp/bat/releases/download/v0.26.1/bat_0.26.1_amd64.deb"
+VERSION="0.26.1"
+DEB="bat_${VERSION}_amd64.deb"
+URL="https://github.com/sharkdp/bat/releases/download/v${VERSION}/${DEB}"
+# sharkdp/bat/releases/latest
+
+if ! command_exists bat; then
+  wget "$URL" &&
+      sudo apt install "./$DEB" &&
+      rm -f "./$DEB"
+else
+  echo "=> bat already installed"
+fi
+
+# ============================================================
+display_header "fd"
+VERSION="10.5.0"
+DEB="fd_${VERSION}_amd64.deb"
+URL="https://github.com/sharkdp/fd/releases/download/v${VERSION}/${DEB}"
+# sharkdp/fd/releases/download/v10.5.0/fd_10.5.0_amd64.deb
+
+if ! command_exists fd; then
+  wget "$URL" &&
+      sudo apt install "./$DEB" &&
+      rm -f "./$DEB"
+fi
+else
+  echo "=> fd already installed"
+fi
