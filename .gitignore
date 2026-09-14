@@ -2,3 +2,4 @@
 log.info
 test.sh
 data
+*.deb
