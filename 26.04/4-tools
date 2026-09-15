@@ -40,7 +40,6 @@ if ! command_exists fd; then
   wget "$URL" &&
       sudo apt install "./$DEB" &&
       rm -f "./$DEB"
-fi
 else
   echo "=> fd already installed"
 fi
